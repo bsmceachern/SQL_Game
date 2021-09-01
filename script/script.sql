@@ -49,6 +49,25 @@ values
 ('Project Sand Hand', 'Fetch', 'Arrakis', 'spice');
 
 
-create table
 
-create table
+create TABLE enemies_friendlies (
+ npc_name varchar(20) PRIMARY KEY
+,world_name text
+,species varchar(20)
+,npc_size varchar(5)
+,npc_health int
+,isFriendly boolean
+,amount_of_damage int
+);
+
+insert into enemies_friendlies (npc_name,world_name,species,npc_size,npc_health,isFriendly,amount_of_damage)
+values
+ ('Shai-Hulud','Arrakis','The Night Sunds','XXS',10,false,1)
+,('Mingtoh','Gruxunet','Tin','XL',75,false,40)
+,('Bob','Piheavion','Human','M',9001,true,25)
+,('Galadriel','Ceayoriel','Gidnel','S',25,true,5)
+,('Kai','Gruxunet','Kepal','XXL',200,true,100)
+,('Bort','Piheavion','Iorurly','XXL',200,false,50)
+;
+
+
