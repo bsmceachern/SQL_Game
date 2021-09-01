@@ -70,4 +70,41 @@ values
 ,('Bort','Piheavion','Iorurly','XXL',200,false,50)
 ;
 
+create table player (
+ player_name varchar(24) primary key
+,health int
+,equipped_weapon text
+,FOREIGN KEY(equipped_weapon) REFERENCES weapons(weapon_name)
+,current_location text
+,FOREIGN KEY(current_location) REFERENCES worlds(name)
+);
+
+insert into player (player_name,health,equipped_weapon,current_location)
+values
+ ('RG',3000,'Phantom','Piheavion')
+,('Branden',3001,'Barbaric Focus','Arrakis')
+,('Kayla',3002,'Blightspore','Gruxunet')
+;
+
+create table inventory_weapon (
+ weapon_name text
+,FOREIGN KEY(weapon_name) REFERENCES weapons(weapon_name)
+,current_ammo int
+);
+
+
+ALTER TABLE inventory_weapon
+add
+ player_name varchar(24)
+,add 
+ foreign key(player_name) references player(player_name)
+;
+
+insert into inventory_weapon (weapon_name,current_ammo,player_name)
+values
+ ('Phantom',100,'RG')
+,('Barbaric Focus',100,'Branden')
+,('Blightspore',100,'Kayla')
+;
+
 
