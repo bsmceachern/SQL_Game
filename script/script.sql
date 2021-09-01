@@ -107,4 +107,21 @@ values
 ,('Blightspore',100,'Kayla')
 ;
 
+select *
+from player
+left join worlds
+on worlds.name = player.current_location;
+
+select inventory_weapon.*, weapons.weapon_type, weapons.weapon_power
+from inventory_weapon
+left join weapons
+on weapons.weapon_name = inventory_weapon.weapon_name;
+
+select * from enemies_friendlies;
+
+select enemies_friendlies.*, player_name
+from player
+inner join enemies_friendlies
+on player.current_location = enemies_friendlies.world_name;
+
 
