@@ -125,3 +125,45 @@ inner join enemies_friendlies
 on player.current_location = enemies_friendlies.world_name;
 
 
+create table environment (
+env_name varchar(20),
+world_name text,
+foreign key(world_name) references worlds(name),
+temperature float,
+livable boolean,
+daylight_hours int
+);
+
+alter table worlds 
+drop column environment;
+
+insert into worlds (name)
+values 
+('Bioward');
+
+
+insert into environment (env_name, world_name, temperature, livable, daylight_hours)
+values
+('Desert', 'Arrakis', 140.0, true, 20),
+('Space', 'Ceayoriel', 15.72, false, 0),
+('Water', 'Piheavion', 75.314159, true, 12),
+('Jungle', 'Gruxunet', 90.215, false, 7),
+('Poison Swamp', 'Bioward', 112.2547, true, 18);
+
+select * from environment;
+
+insert into worlds (name)
+values
+('Tattooine'),
+('Ayesear');
+
+insert into environment (env_name, world_name, temperature, livable, daylight_hours)
+values
+('Desert', 'Tattooine', 130, true, 19),
+('Space', 'Ayesear', -245.76, false, 1);
+
+
+select env_name, count(env_name) as total_environments, count(distinct env_name) as distinct_environments 
+from environment
+group by env_name;
+
